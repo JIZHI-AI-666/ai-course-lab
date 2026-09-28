@@ -5,13 +5,10 @@
 """
 import argparse
 import csv
-import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-import weekpath  # noqa: E402
-
-DATA = weekpath.data_path("生词表.csv")
+WEEK_DIR = Path(__file__).resolve().parent
+DATA = WEEK_DIR / "data" / "生词表.csv"
 
 
 def load_words(path=DATA):
@@ -89,7 +86,7 @@ def main():
     print("总词汇 %d 个，其中 HSK%s 词汇 %d 个，词性分布：%s" %
           (len(words), args.level, len(selected_words), count_by_pos(selected_words)))
 
-    output = weekpath.root_path("练习.txt")
+    output = WEEK_DIR / "练习.txt"
     if args.mode == "fill":
         gen_fill_blank_exercises(selected_words, output)
     else:
