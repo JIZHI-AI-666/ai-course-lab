@@ -1,0 +1,214 @@
+{
+  "timestamp_utc": "2026-10-19T05:46:43.971315+00:00",
+  "model": "qwen2.5:0.5b",
+  "backend": "local",
+  "temperature": 0.2,
+  "max_output_tokens": 600,
+  "questions": [
+    {
+      "id": 1,
+      "title": "把字句纠错",
+      "prompt": "你是国际中文教育助教。学生写：‘我把这本书喜欢。’请判断正误，给出自然改写，并解释为什么‘我把这本书看完了’可以成立。限150字。",
+      "criteria": "指出原句不自然；改为我喜欢这本书；解释喜欢通常不表示对宾语的处置，而看完有动作结果。",
+      "elapsed_seconds": 1.1117,
+      "answer": "“我把这本书喜欢。”这个句子是正确的，可以自然改写为：“我读完了这本书。”这个改写是因为“喜欢”和“读完”这两个词之间的关系是并列的，可以自然地将“喜欢”放在“读完”之前，形成一个简单的句子结构。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 1105894583,
+        "load_duration": 535104500,
+        "prompt_eval_count": 72,
+        "prompt_eval_duration": 113754000,
+        "eval_count": 63,
+        "eval_duration": 453924000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:0.5b",
+          "model": "qwen2.5:0.5b",
+          "size": 483624221,
+          "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "494.03M",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T13:56:45.155964+08:00",
+          "size_vram": 483624221,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "依据材料出阅读题",
+      "prompt": "只依据材料出一道单选阅读题，包含A至D四个选项、唯一正确答案和一句依据；不要补充材料以外的事实。材料：小林每天骑车上学，需要20分钟。今天下雨，他改坐公交车，花了35分钟，最后迟到了5分钟。请考查今天迟到的原因。限180字。",
+      "criteria": "四选项且答案唯一；原因关联下雨改坐公交耗时增加；不捏造堵车、起床晚等事实。",
+      "elapsed_seconds": 0.2338,
+      "answer": "今天迟到的原因可能是小林在上学的路上发生了交通事故，或者他因为下雨而没有及时调整自己的出行计划。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 219978833,
+        "load_duration": 829250,
+        "prompt_eval_count": 104,
+        "prompt_eval_duration": 41834000,
+        "eval_count": 25,
+        "eval_duration": 176027000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:0.5b",
+          "model": "qwen2.5:0.5b",
+          "size": 483624221,
+          "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "494.03M",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T13:56:45.388218+08:00",
+          "size_vram": 483624221,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "近义词辨析",
+      "prompt": "向中级汉语学习者解释‘再’和‘又’表示重复时的区别，各给一个正确例句，再纠正‘昨天我再去了图书馆’。限150字，不要把规律说成绝无例外。",
+      "criteria": "通常再用于尚未发生的重复，又用于已经发生的重复；例句正确；昨天我又去了图书馆；避免绝对化。",
+      "elapsed_seconds": 0.9783,
+      "answer": "再：表示重复，表示上一次的事件或行为再次发生。例句：昨天我再去了图书馆，今天我再去图书馆。又：表示重复，表示上一次的事件或行为再次发生。例句：昨天我再去了图书馆，今天我再去图书馆，明天我再去图书馆。再：表示重复，表示上一次的事件或行为再次发生。例句：昨天我再去了图书馆，今天我再去图书馆，明天我再去图书馆。又：表示重复，表示上一次的事件或行为再次发生。例句：昨天我再去了图书馆，今天我再去图书馆，明天我再去图书馆。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 969529500,
+        "load_duration": 841458,
+        "prompt_eval_count": 79,
+        "prompt_eval_duration": 31926000,
+        "eval_count": 132,
+        "eval_duration": 935314000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:0.5b",
+          "model": "qwen2.5:0.5b",
+          "size": 483624221,
+          "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "494.03M",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T13:56:46.384107+08:00",
+          "size_vram": 483624221,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "教学活动设计",
+      "prompt": "为中级汉语学习者设计一个10分钟的把字句课堂活动。必须含教学目标、三个环节及每环节分钟数（合计10）、一个正确例句、一个可观察的评价标准。只用普通教室已有物品，限200字。",
+      "criteria": "目标清楚；三个环节时间合计10分钟；把字句例句自然；评价可观察；无需额外设备。",
+      "elapsed_seconds": 1.9054,
+      "answer": "教学目标：通过本堂课的学习，中级汉语学习者能够掌握基本的汉字书写技巧，能够运用所学的汉字进行简单的句子构建。\n\n环节一：导入阶段（5分钟）\n1. 教师展示一张图片，图片上有一只小猫，教师讲解“小猫”这个汉字的书写方法。\n2. 教师示范书写“小猫”，并讲解书写时的笔顺和姿势。\n\n环节二：学习阶段（10分钟）\n1. 教师讲解汉字的书写技巧，如“小”字的笔顺、“猫”字的笔画等。\n2. 教师示范书写“小猫”，并讲解书写时的姿势和笔画。\n\n环节三：练习阶段（5分钟）\n1. 教师布置一个简单的句子，如“小猫在草地上睡觉。”\n2. 教师讲解如何用所学的汉字构建句子，如“小猫在草地上睡觉。”\n3. 教师观察学生在练习中的表现，如书写是否正确、句子是否完整等。\n\n评价标准：学生能够正确书写汉字，能够运用所学的汉字构建简单的句子。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 1895948417,
+        "load_duration": 902375,
+        "prompt_eval_count": 88,
+        "prompt_eval_duration": 112970000,
+        "eval_count": 246,
+        "eval_duration": 1780365000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:0.5b",
+          "model": "qwen2.5:0.5b",
+          "size": 483624221,
+          "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "494.03M",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T13:56:48.301826+08:00",
+          "size_vram": 483624221,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "虚构作文反馈与隐私",
+      "prompt": "以下为完全虚构的学生短文，无真实个人数据：‘昨天我去图书馆。我看书两小时了。我很高兴的。’请按‘优点／问题／修改建议’三段反馈，给出自然的修改版本；不要推测学生姓名、水平或家庭情况。限180字。",
+      "criteria": "三段结构；指出时量表达和很高兴的的问题；改为看了两个小时的书、我很高兴等自然句；不编造个人信息。",
+      "elapsed_seconds": 0.3572,
+      "answer": "昨天我去图书馆，看了两小时的书。我感到很高兴。然而，我注意到书上的字迹有些模糊，可能需要我重新阅读。我决定先完成这本书，然后再继续我的学习。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 348576458,
+        "load_duration": 1010416,
+        "prompt_eval_count": 94,
+        "prompt_eval_duration": 44115000,
+        "eval_count": 43,
+        "eval_duration": 301437000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:0.5b",
+          "model": "qwen2.5:0.5b",
+          "size": 483624221,
+          "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "494.03M",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T13:56:48.670175+08:00",
+          "size_vram": 483624221,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    }
+  ],
+  "model_info": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen2",
+    "families": [
+      "qwen2"
+    ],
+    "parameter_size": "494.03M",
+    "quantization_level": "Q4_K_M"
+  }
+}

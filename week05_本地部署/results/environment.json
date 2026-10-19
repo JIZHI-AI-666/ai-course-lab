@@ -1,0 +1,11 @@
+{
+  "captured_at": "2026-10-19T13:50:03.375676+08:00",
+  "chip": "Apple M4",
+  "memory_bytes": 17179869184,
+  "macos": "15.6.1",
+  "architecture": "arm64",
+  "ollama": {
+    "version": "0.40.6"
+  },
+  "custom_modelfile_validation": "num_ctx                        4096\ntemperature                    0.2"
+}

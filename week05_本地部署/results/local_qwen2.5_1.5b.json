@@ -1,0 +1,214 @@
+{
+  "timestamp_utc": "2026-10-19T05:56:14.822678+00:00",
+  "model": "qwen2.5:1.5b",
+  "backend": "local",
+  "temperature": 0.2,
+  "max_output_tokens": 600,
+  "questions": [
+    {
+      "id": 1,
+      "title": "把字句纠错",
+      "prompt": "你是国际中文教育助教。学生写：‘我把这本书喜欢。’请判断正误，给出自然改写，并解释为什么‘我把这本书看完了’可以成立。限150字。",
+      "criteria": "指出原句不自然；改为我喜欢这本书；解释喜欢通常不表示对宾语的处置，而看完有动作结果。",
+      "elapsed_seconds": 3.0119,
+      "answer": "学生写：‘我把这本书喜欢。’ 这句话的自然改写是：‘我读完了这本书。’\n\n原因：在中文中，\"喜欢\"和\"读完\"是两个并列的动词短语，可以互换使用。\"喜欢\"表示对某物的偏好或喜爱，而\"读完\"表示已经完成了阅读。因此，\"我读完了这本书\"和\"我把这本书喜欢\"在表达上是等价的，都可以传达出对这本书的阅读完成状态。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 3005246667,
+        "load_duration": 1288754292,
+        "prompt_eval_count": 72,
+        "prompt_eval_duration": 207345000,
+        "eval_count": 109,
+        "eval_duration": 1501118000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:1.5b",
+          "model": "qwen2.5:1.5b",
+          "size": 1169371954,
+          "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T14:06:17.917399+08:00",
+          "size_vram": 1169371954,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "依据材料出阅读题",
+      "prompt": "只依据材料出一道单选阅读题，包含A至D四个选项、唯一正确答案和一句依据；不要补充材料以外的事实。材料：小林每天骑车上学，需要20分钟。今天下雨，他改坐公交车，花了35分钟，最后迟到了5分钟。请考查今天迟到的原因。限180字。",
+      "criteria": "四选项且答案唯一；原因关联下雨改坐公交耗时增加；不捏造堵车、起床晚等事实。",
+      "elapsed_seconds": 0.9639,
+      "answer": "今天小林迟到的原因是由于他改坐公交车上学，花费的时间比骑车上学多。具体来说，他原本骑车上学需要20分钟，而今天坐公交车则需要35分钟。因此，迟到的原因是由于他选择了花费时间更长的交通方式。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 953564750,
+        "load_duration": 1521375,
+        "prompt_eval_count": 104,
+        "prompt_eval_duration": 128699000,
+        "eval_count": 61,
+        "eval_duration": 819823000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:1.5b",
+          "model": "qwen2.5:1.5b",
+          "size": 1169371954,
+          "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T14:06:18.892418+08:00",
+          "size_vram": 1169371954,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "近义词辨析",
+      "prompt": "向中级汉语学习者解释‘再’和‘又’表示重复时的区别，各给一个正确例句，再纠正‘昨天我再去了图书馆’。限150字，不要把规律说成绝无例外。",
+      "criteria": "通常再用于尚未发生的重复，又用于已经发生的重复；例句正确；昨天我又去了图书馆；避免绝对化。",
+      "elapsed_seconds": 3.0929,
+      "answer": "“再”和“又”都是表示重复的词汇，但它们在使用时有一些细微的区别。\n\n1. **“再”**：表示再次或再次进行某事。它强调的是重复的次数或频率。例如：“我昨天去了图书馆，今天再去了。”这里的“再”强调了“今天”是“昨天”的重复，即再次去图书馆。\n\n2. **“又”**：表示再次或再次做某事。它强调的是重复的性质，即强调重复本身。例如：“我昨天去了图书馆，今天又去了。”这里的“又”强调了“今天”是“昨天”的重复，即再次去图书馆。\n\n**纠正“昨天我再去了图书馆”**：这个句子是正确的，因为它使用了“再”来表示重复。这里的“再”强调了“今天”是“昨天”的重复，即再次去图书馆。\n\n总结：“再”强调的是重复的次数或频率，而“又”强调的是重复的性质，即强调重复本身。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 3087745291,
+        "load_duration": 1019958,
+        "prompt_eval_count": 79,
+        "prompt_eval_duration": 141177000,
+        "eval_count": 212,
+        "eval_duration": 2942909000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:1.5b",
+          "model": "qwen2.5:1.5b",
+          "size": 1169371954,
+          "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T14:06:21.994951+08:00",
+          "size_vram": 1169371954,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "教学活动设计",
+      "prompt": "为中级汉语学习者设计一个10分钟的把字句课堂活动。必须含教学目标、三个环节及每环节分钟数（合计10）、一个正确例句、一个可观察的评价标准。只用普通教室已有物品，限200字。",
+      "criteria": "目标清楚；三个环节时间合计10分钟；把字句例句自然；评价可观察；无需额外设备。",
+      "elapsed_seconds": 3.8823,
+      "answer": "**教学目标：**\n1. 学习并掌握“把”字句的基本结构。\n2. 能够正确使用“把”字句进行表达。\n3. 提升学生的听力和口语能力。\n\n**环节设计：**\n\n1. **导入环节（2分钟）**\n   - 教师展示一个情景：小明把书放在桌子上。\n   - 学生观察并模仿，教师解释“把”字句的基本结构：把+动词+宾语。\n\n2. **操练环节（3分钟）**\n   - 分组活动：学生分组，每组一个“把”字句的句子，其他学生尝试用“把”字句来表达。\n   - 教师提供一些句子，学生尝试用“把”字句来表达。\n\n3. **应用环节（5分钟）**\n   - 学生自由练习，教师巡回指导。\n   - 教师提供一些“把”字句的句子，学生尝试用“把”字句来表达。\n\n**正确例句：**\n“把书放在桌子上。”\n\n**评价标准：**\n- 句子是否符合“把”字句的基本结构。\n- 是否能正确使用“把”字句进行表达。\n- 是否能听懂并复述教师提供的“把”字句句子。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 3871699833,
+        "load_duration": 1425750,
+        "prompt_eval_count": 88,
+        "prompt_eval_duration": 86988000,
+        "eval_count": 277,
+        "eval_duration": 3780056000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:1.5b",
+          "model": "qwen2.5:1.5b",
+          "size": 1169371954,
+          "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T14:06:25.889169+08:00",
+          "size_vram": 1169371954,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "虚构作文反馈与隐私",
+      "prompt": "以下为完全虚构的学生短文，无真实个人数据：‘昨天我去图书馆。我看书两小时了。我很高兴的。’请按‘优点／问题／修改建议’三段反馈，给出自然的修改版本；不要推测学生姓名、水平或家庭情况。限180字。",
+      "criteria": "三段结构；指出时量表达和很高兴的的问题；改为看了两个小时的书、我很高兴等自然句；不编造个人信息。",
+      "elapsed_seconds": 1.0643,
+      "answer": "昨天我去图书馆，看了两小时的书，感觉非常充实和愉快。我非常喜欢这种学习和阅读的经历。我认为，图书馆是获取知识和灵感的好地方。我建议，下次可以尝试更多样化的阅读方式，比如听书或者在线课程，这样可以更灵活地安排时间，也能提高学习效率。",
+      "finish_reason": "stop",
+      "metrics": {
+        "total_duration": 1054617875,
+        "load_duration": 1183542,
+        "prompt_eval_count": 94,
+        "prompt_eval_duration": 130741999,
+        "eval_count": 68,
+        "eval_duration": 919745000
+      },
+      "running_models": [
+        {
+          "name": "qwen2.5:1.5b",
+          "model": "qwen2.5:1.5b",
+          "size": 1169371954,
+          "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-10-19T14:06:26.965155+08:00",
+          "size_vram": 1169371954,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    }
+  ],
+  "model_info": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen2",
+    "families": [
+      "qwen2"
+    ],
+    "parameter_size": "1.5B",
+    "quantization_level": "Q4_K_M"
+  }
+}

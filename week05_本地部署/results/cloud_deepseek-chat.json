@@ -1,0 +1,104 @@
+{
+  "timestamp_utc": "2026-10-19T05:46:48.496679+00:00",
+  "model": "deepseek-chat",
+  "backend": "cloud",
+  "temperature": 0.2,
+  "max_output_tokens": 600,
+  "questions": [
+    {
+      "id": 1,
+      "title": "把字句纠错",
+      "prompt": "你是国际中文教育助教。学生写：‘我把这本书喜欢。’请判断正误，给出自然改写，并解释为什么‘我把这本书看完了’可以成立。限150字。",
+      "criteria": "指出原句不自然；改为我喜欢这本书；解释喜欢通常不表示对宾语的处置，而看完有动作结果。",
+      "elapsed_seconds": 3.4938,
+      "answer": "错误。改写：“我喜欢这本书。”原因：“把”字句要求动词有处置性，能对宾语产生影响。“喜欢”是心理状态动词，无处置义，不能用于“把”字句。“看完”是动结式，表示动作使宾语发生状态变化（书被看完），具有处置性，故“我把这本书看完了”成立。",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 43,
+        "completion_tokens": 75,
+        "total_tokens": 118,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 43
+      }
+    },
+    {
+      "id": 2,
+      "title": "依据材料出阅读题",
+      "prompt": "只依据材料出一道单选阅读题，包含A至D四个选项、唯一正确答案和一句依据；不要补充材料以外的事实。材料：小林每天骑车上学，需要20分钟。今天下雨，他改坐公交车，花了35分钟，最后迟到了5分钟。请考查今天迟到的原因。限180字。",
+      "criteria": "四选项且答案唯一；原因关联下雨改坐公交耗时增加；不捏造堵车、起床晚等事实。",
+      "elapsed_seconds": 1.6155,
+      "answer": "**题目：** 根据材料，小林今天迟到的原因是什么？\n\nA. 他骑车上学花了20分钟\nB. 他改坐公交车花了35分钟\nC. 他今天起床晚了\nD. 他走路去上学\n\n**正确答案：** B\n\n**依据：** 材料明确说“今天下雨，他改坐公交车，花了35分钟，最后迟到了5分钟”，说明坐公交车耗时35分钟导致迟到。",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 71,
+        "completion_tokens": 94,
+        "total_tokens": 165,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 71
+      }
+    },
+    {
+      "id": 3,
+      "title": "近义词辨析",
+      "prompt": "向中级汉语学习者解释‘再’和‘又’表示重复时的区别，各给一个正确例句，再纠正‘昨天我再去了图书馆’。限150字，不要把规律说成绝无例外。",
+      "criteria": "通常再用于尚未发生的重复，又用于已经发生的重复；例句正确；昨天我又去了图书馆；避免绝对化。",
+      "elapsed_seconds": 2.4899,
+      "answer": "“再”多用于未发生或计划中的重复，常带“下次、以后”等未来语境；“又”多用于已发生的重复，常指过去或当前再次发生。例：明天我想再去一次图书馆。／他昨天又迟到了。病句“昨天我再去了图书馆”应改为“昨天我又去了图书馆”。两者有时可通用，但过去已实现重复通常用“又”更自然。",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 47,
+        "completion_tokens": 88,
+        "total_tokens": 135,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 47
+      }
+    },
+    {
+      "id": 4,
+      "title": "教学活动设计",
+      "prompt": "为中级汉语学习者设计一个10分钟的把字句课堂活动。必须含教学目标、三个环节及每环节分钟数（合计10）、一个正确例句、一个可观察的评价标准。只用普通教室已有物品，限200字。",
+      "criteria": "目标清楚；三个环节时间合计10分钟；把字句例句自然；评价可观察；无需额外设备。",
+      "elapsed_seconds": 2.3049,
+      "answer": "**教学目标**：学生能用“把”字句描述物品位置变化。  \n**环节**：1. 教师示范（2分钟）：拿起书放桌上，说“我把书放在桌子上。” 2. 两人练习（5分钟）：A指令“请把笔放进铅笔盒”，B操作并复述“我把笔放进铅笔盒了”，交换。3. 展示评价（3分钟）：两组演示，全班判断。  \n**正确例句**：“我把书放在桌子上。”  \n**评价标准**：能说出“主语+把+宾语+动词+在/进/到+地点”且动作与句意一致，视为达标。",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 53,
+        "completion_tokens": 138,
+        "total_tokens": 191,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 53
+      }
+    },
+    {
+      "id": 5,
+      "title": "虚构作文反馈与隐私",
+      "prompt": "以下为完全虚构的学生短文，无真实个人数据：‘昨天我去图书馆。我看书两小时了。我很高兴的。’请按‘优点／问题／修改建议’三段反馈，给出自然的修改版本；不要推测学生姓名、水平或家庭情况。限180字。",
+      "criteria": "三段结构；指出时量表达和很高兴的的问题；改为看了两个小时的书、我很高兴等自然句；不编造个人信息。",
+      "elapsed_seconds": 3.1172,
+      "answer": "优点：句子简短清楚，能表达基本经历和心情。问题：“看书两小时了”时态不自然，“很高兴的”搭配不当，句间衔接较弱。修改建议：用“看了两个小时的书”表达完成时长；“很高兴”作谓语；补“因为”使因果更顺。修改版：昨天我去图书馆。我看了两个小时的书，因为读到喜欢的内容，所以很高兴。",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 62,
+        "completion_tokens": 83,
+        "total_tokens": 145,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 62
+      }
+    }
+  ]
+}
