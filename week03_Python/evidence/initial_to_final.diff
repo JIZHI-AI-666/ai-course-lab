@@ -1,0 +1,149 @@
+--- 20260928_ai_first
++++ current_vocab_tool
+@@ -1,31 +1,37 @@
+-# W3 生词表 CSV -> 自动生成练习题
+-# 运行：python vocab_tool.py
+-# 可选：python vocab_tool.py --mode fill（生成填空题）
+-import os
++"""从生词表 CSV 自动生成 HSK 词汇练习。
++
++运行：python week03_Python/vocab_tool.py
++填空模式：python week03_Python/vocab_tool.py --mode fill
++"""
++import argparse
+ import csv
+ import sys
+-import argparse
++from pathlib import Path
+ 
+-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+-import weekpath  # noqa: E402  统一解析 data/ 路径，换目录也不会找不到文件
++WEEK_DIR = Path(__file__).resolve().parent
++sys.path.insert(0, str(WEEK_DIR.parent))
++import weekpath
+ 
+-DATA = weekpath.data_path("生词表.csv")
++DATA = Path(weekpath.data_path("生词表.csv"))
+ 
+ 
+ def load_words(path=DATA):
+-    with open(path, encoding="utf-8") as f:
+-        return list(csv.DictReader(f))
++    """读取 UTF-8 生词 CSV，同时兼容电子表格导出的 BOM。"""
++    with open(path, encoding="utf-8-sig", newline="") as file:
++        return list(csv.DictReader(file))
+ 
+ 
+ def filter_by_level(words, level="4"):
+-    return [w for w in words if str(w["HSK等级"]) == str(level)]
++    """筛选指定 HSK 等级的词条。"""
++    return [word for word in words if str(word["HSK等级"]).strip() == str(level).strip()]
+ 
+ 
+ def count_by_pos(words):
+-    d = {}
+-    for w in words:
+-        d[w["词性"]] = d.get(w["词性"], 0) + 1
+-    return d
++    """统计每种词性对应的词条数量。"""
++    counts = {}
++    for word in words:
++        counts[word["词性"]] = counts.get(word["词性"], 0) + 1
++    return counts
+ 
+ 
+ def group_by_pos(words):
+@@ -38,54 +44,63 @@
+ 
+ def gen_grouped_exercises(words, out=None):
+     """生成按词性分组的造句练习。"""
+-    # 产物统一落到代码包根目录：否则"从哪个目录运行"决定了文件落在哪，
+-    # 与 README 的"任意目录运行"承诺冲突，且散落的产物 .gitignore 拦不住。
+-    out = out or weekpath.root_path("练习.txt")
+-    with open(out, "w", encoding="utf-8") as f:
+-        f.write("HSK 词汇分组造句练习\n")
+-        f.write("=" * 24 + "\n\n")
++    out = Path(out) if out else weekpath.root_path("练习.txt")
++    with open(out, "w", encoding="utf-8") as file:
++        file.write("HSK 词汇分组造句练习\n")
++        file.write("=" * 24 + "\n\n")
+         for pos, group in group_by_pos(words).items():
+-            f.write("【%s】\n" % pos)
+-            for w in group:
+-                f.write("- 用“%s”造一个句子。（释义：%s）\n" % (w["词汇"], w["释义"]))
+-            f.write("\n")
++            file.write("【%s】\n" % pos)
++            for word in group:
++                file.write("- 用“%s”造一个句子。（释义：%s）\n" %
++                           (word["词汇"], word["释义"]))
++            file.write("\n")
+ 
+ 
+ SENTENCE_TEMPLATES = {
+-    "把字句": "老师正在讲解____的用法。",
+-    "商量": "这件事我们明天再一起____吧。",
+-    "感动": "电影中的故事让我十分____。",
+-    "坚持": "学习汉语要每天____练习。",
++    "把字句": "老师正在讲解把字句的用法。",
++    "商量": "这件事我们明天再一起商量吧。",
++    "感动": "电影中的故事让我十分感动。",
++    "坚持": "学习汉语要每天坚持练习。",
+ }
+ 
+ 
+ def gen_fill_blank_exercises(words, out=None):
+     """用目标词替换句子中的对应位置，生成填空题。"""
+-    out = out or weekpath.root_path("练习.txt")
+-    with open(out, "w", encoding="utf-8") as f:
+-        f.write("HSK 词汇填空练习\n")
+-        f.write("=" * 24 + "\n\n")
+-        for index, w in enumerate(words, start=1):
+-            sentence = SENTENCE_TEMPLATES.get(
+-                w["词汇"], "请用“____”完成一个与“%s”有关的句子。" % w["词汇"]
+-            )
+-            f.write("%d. %s（提示：%s）\n" % (index, sentence, w["释义"]))
++    out = Path(out) if out else weekpath.root_path("练习.txt")
++    with open(out, "w", encoding="utf-8") as file:
++        file.write("HSK 词汇填空练习\n")
++        file.write("=" * 24 + "\n\n")
++        for index, word in enumerate(words, start=1):
++            original = SENTENCE_TEMPLATES.get(word["词汇"])
++            if original is None:
++                file.write("%d. 用“%s”造句。（提示：%s；暂无语境填空模板）\n" %
++                           (index, word["词汇"], word["释义"]))
++                continue
++            sentence = original.replace(word["词汇"], "____", 1)
++            file.write("%d. %s（提示：%s）\n" %
++                       (index, sentence, word["释义"]))
+ 
+ 
+-if __name__ == "__main__":
++def main():
+     parser = argparse.ArgumentParser(description="从生词表生成 HSK 词汇练习")
+     parser.add_argument("--mode", choices=("group", "fill"), default="group",
+                         help="group：按词性分组造句（默认）；fill：生成填空题")
+     parser.add_argument("--level", default="4", help="要生成的 HSK 等级，默认 4")
++    parser.add_argument("--output", help="可选输出文件；默认写入仓库根目录练习.txt")
+     args = parser.parse_args()
+ 
+     words = load_words()
+     selected_words = filter_by_level(words, args.level)
+-    print("总词汇 %d 个，其中 HSK%s 词汇 %d 个，词性分布：%s"
+-          % (len(words), args.level, len(selected_words), count_by_pos(selected_words)))
+-    out = weekpath.root_path("练习.txt")
++    print("总词汇 %d 个，其中 HSK%s 词汇 %d 个，词性分布：%s" %
++          (len(words), args.level, len(selected_words), count_by_pos(selected_words)))
++
++    output = Path(args.output) if args.output else Path(weekpath.root_path("练习.txt"))
+     if args.mode == "fill":
+-        gen_fill_blank_exercises(selected_words, out)
++        gen_fill_blank_exercises(selected_words, output)
+     else:
+-        gen_grouped_exercises(selected_words, out)
+-    print("已生成：%s" % out)
++        gen_grouped_exercises(selected_words, output)
++    print("已生成：%s" % output)
++
++
++if __name__ == "__main__":
++    main()

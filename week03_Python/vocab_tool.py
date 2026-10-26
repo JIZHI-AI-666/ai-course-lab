@@ -5,21 +5,25 @@
 """
 import argparse
 import csv
+import sys
 from pathlib import Path
 
 WEEK_DIR = Path(__file__).resolve().parent
-DATA = WEEK_DIR / "data" / "生词表.csv"
+sys.path.insert(0, str(WEEK_DIR.parent))
+import weekpath
+
+DATA = Path(weekpath.data_path("生词表.csv"))
 
 
 def load_words(path=DATA):
-    """读取 UTF-8 编码的生词 CSV。"""
-    with open(path, encoding="utf-8", newline="") as file:
+    """读取 UTF-8 生词 CSV，同时兼容电子表格导出的 BOM。"""
+    with open(path, encoding="utf-8-sig", newline="") as file:
         return list(csv.DictReader(file))
 
 
 def filter_by_level(words, level="4"):
     """筛选指定 HSK 等级的词条。"""
-    return [word for word in words if word["HSK等级"] == str(level)]
+    return [word for word in words if str(word["HSK等级"]).strip() == str(level).strip()]
 
 
 def count_by_pos(words):
@@ -53,10 +57,10 @@ def gen_grouped_exercises(words, out=None):
 
 
 SENTENCE_TEMPLATES = {
-    "把字句": "老师正在讲解____的用法。",
-    "商量": "这件事我们明天再一起____吧。",
-    "感动": "电影中的故事让我十分____。",
-    "坚持": "学习汉语要每天____练习。",
+    "把字句": "老师正在讲解把字句的用法。",
+    "商量": "这件事我们明天再一起商量吧。",
+    "感动": "电影中的故事让我十分感动。",
+    "坚持": "学习汉语要每天坚持练习。",
 }
 
 
@@ -67,9 +71,12 @@ def gen_fill_blank_exercises(words, out=None):
         file.write("HSK 词汇填空练习\n")
         file.write("=" * 24 + "\n\n")
         for index, word in enumerate(words, start=1):
-            sentence = SENTENCE_TEMPLATES.get(
-                word["词汇"], "请用“____”完成一个与“%s”有关的句子。" % word["词汇"]
-            )
+            original = SENTENCE_TEMPLATES.get(word["词汇"])
+            if original is None:
+                file.write("%d. 用“%s”造句。（提示：%s；暂无语境填空模板）\n" %
+                           (index, word["词汇"], word["释义"]))
+                continue
+            sentence = original.replace(word["词汇"], "____", 1)
             file.write("%d. %s（提示：%s）\n" %
                        (index, sentence, word["释义"]))
 
@@ -79,6 +86,7 @@ def main():
     parser.add_argument("--mode", choices=("group", "fill"), default="group",
                         help="group：按词性分组造句（默认）；fill：生成填空题")
     parser.add_argument("--level", default="4", help="要生成的 HSK 等级，默认 4")
+    parser.add_argument("--output", help="可选输出文件；默认写入仓库根目录练习.txt")
     args = parser.parse_args()
 
     words = load_words()
@@ -86,7 +94,7 @@ def main():
     print("总词汇 %d 个，其中 HSK%s 词汇 %d 个，词性分布：%s" %
           (len(words), args.level, len(selected_words), count_by_pos(selected_words)))
 
-    output = WEEK_DIR / "练习.txt"
+    output = Path(args.output) if args.output else Path(weekpath.root_path("练习.txt"))
     if args.mode == "fill":
         gen_fill_blank_exercises(selected_words, output)
     else:

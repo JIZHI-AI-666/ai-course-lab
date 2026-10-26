@@ -34,8 +34,9 @@ def main():
     if not local and (not key or key.startswith('your_')):
         raise SystemExit('缺少有效 DEEPSEEK_API_KEY；未执行云端调用。')
     base = 'http://127.0.0.1:11434' if local else os.environ.get('DEEPSEEK_BASE_URL','https://api.deepseek.com/v1').rstrip('/')
-    questions = json.loads((ROOT/'questions.json').read_text())
+    questions = json.loads((ROOT/'questions.json').read_text(encoding='utf-8'))
     path = ROOT/'results'/(args.backend+'_'+args.model.replace(':','_')+'.json')
+    path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():
         raise SystemExit(f'结果已存在，请先归档再重跑：{path.name}')
     result = {'timestamp_utc':datetime.now(timezone.utc).isoformat(), 'model':args.model,'backend':args.backend,'temperature':0.2,'max_output_tokens':600,'questions':[]}

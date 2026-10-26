@@ -43,4 +43,4 @@ python week06_双引擎/run_boundary_tests.py 4
 python week06_双引擎/run_boundary_tests.py 5
 ```
 
-没有配置密钥时，路径 ② 会打出本地 ConnectionError 回退日志，随后云端因缺密钥失败；路径 ③ 会直接回退本地。这不是静默失败。配好 `.env` 后重跑 2、3 即可补上云端答案。
+2026-10-26 已补跑路径 ②、③：本地失败后云端作答与直接云端作答均成功，耗时、token、完整答案和原始日志见 [边界测试记录](week06_test_log.md)。测试完成后 Ollama 已恢复；密钥未入库。

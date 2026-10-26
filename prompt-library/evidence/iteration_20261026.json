@@ -1,0 +1,179 @@
+{
+  "recorded_at": "2026-10-26T05:40:31.639317+00:00",
+  "source": "2026-10-26 补交复测，不追溯为9月实验",
+  "essay": "昨天我去图书馆。我看书两小时了。我很高兴的。虽然下雨，所以我还是去了。",
+  "rounds": [
+    {
+      "round": "R0",
+      "request": {
+        "model": "deepseek-chat",
+        "messages": [
+          {
+            "role": "user",
+            "content": "请批改下面这篇完全虚构的中文短文，限300字。\n短文：昨天我去图书馆。我看书两小时了。我很高兴的。虽然下雨，所以我还是去了。"
+          }
+        ],
+        "temperature": 0.2,
+        "max_tokens": 750
+      },
+      "elapsed_seconds": 1.865,
+      "response": {
+        "id": "9d3c8335-ca2d-4b02-9fb4-9c474d4d33ff",
+        "object": "chat.completion",
+        "created": 1792993231,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "昨天我去图书馆。我看书两小时了。我很高兴的。虽然下雨，所以我还是去了。\n\n批改：\n1. “我看书两小时了” → “我看了两个小时的书”（时态和搭配不当；“两小时了”表示持续到现在，与“昨天”矛盾）。\n2. “我很高兴的” → “我很高兴”（“的”多余，形容词谓语句不用“的”）。\n3. “虽然下雨，所以我还是去了” → “虽然下雨，但我还是去了”（“虽然”应与“但是/但”搭配，不能用“所以”）。\n\n修改后：昨天我去了图书馆。我看了两个小时的书。我很高兴。虽然下雨，但我还是去了。"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 42,
+          "completion_tokens": 143,
+          "total_tokens": 185,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 42
+        },
+        "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+      }
+    },
+    {
+      "round": "R1",
+      "request": {
+        "model": "deepseek-chat",
+        "messages": [
+          {
+            "role": "user",
+            "content": "你是国际中文教师。批改下面的完全虚构短文。依次输出优点、问题、修改建议，限300字。\n短文：昨天我去图书馆。我看书两小时了。我很高兴的。虽然下雨，所以我还是去了。"
+          }
+        ],
+        "temperature": 0.2,
+        "max_tokens": 750
+      },
+      "elapsed_seconds": 2.064,
+      "response": {
+        "id": "e73f152d-8ec5-4cdb-9845-02297870b56d",
+        "object": "chat.completion",
+        "created": 1792993233,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "优点：句子简短，意思基本可懂；能使用“虽然”“还是”表达转折与坚持。\n\n问题：1.“我看书两小时了”时态混用，过去事件宜用“看了两小时（书）”。2.“我很高兴的”结构不当，形容词谓语不加“的”，应说“我很高兴”。3.“虽然下雨，所以……”关联词搭配错误，“虽然”应与“但是/可是/还是”呼应，不能用“所以”。4.句间衔接较生硬，可适当合并。\n\n修改建议：昨天我去了图书馆。虽然下雨，我还是去了。我在那儿看了两个小时的书，很高兴。"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 52,
+          "completion_tokens": 133,
+          "total_tokens": 185,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 52
+        },
+        "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+      }
+    },
+    {
+      "round": "R2",
+      "request": {
+        "model": "deepseek-chat",
+        "messages": [
+          {
+            "role": "user",
+            "content": "你是国际中文教师。批改完全虚构的短文。依次输出优点、问题、修改建议。每个问题引用原句，标注错因，给出可替换句及原因；错因只选语序、搭配、关联词、时量、结构助词。不能确定的标待核对，不凑错误，不改写整篇，不增加人物经历。限400字。\n短文：昨天我去图书馆。我看书两小时了。我很高兴的。虽然下雨，所以我还是去了。"
+          }
+        ],
+        "temperature": 0.2,
+        "max_tokens": 750
+      },
+      "elapsed_seconds": 2.206,
+      "response": {
+        "id": "af3b5c1f-bc30-4681-9d7b-47c3fcdcb82a",
+        "object": "chat.completion",
+        "created": 1792993235,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "**优点**：句子简短，时间、地点、事件清楚；“虽然……还是……”表达转折意愿可理解。\n\n**问题与修改建议**：\n1. 原句“我看书两小时了。”错因：时量。动作已完成，不宜用“了”表持续。可替换：“我看书看了两小时。”原因：用动词重叠式“看了”引出时量补语。\n2. 原句“我很高兴的。”错因：结构助词。形容词谓语句末一般不用“的”。可替换：“我很高兴。”原因：删除多余“的”。\n3. 原句“虽然下雨，所以我还是去了。”错因：关联词。“虽然”应与“但是/还是”呼应，不能与“所以”搭配。可替换：“虽然下雨，但是我还是去了。”原因：转折关联词配套使用。\n\n**待核对**：无。"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 108,
+          "completion_tokens": 184,
+          "total_tokens": 292,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 108
+        },
+        "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+      }
+    },
+    {
+      "round": "R3",
+      "request": {
+        "model": "deepseek-chat",
+        "messages": [
+          {
+            "role": "user",
+            "content": "你是国际中文教师。批改完全虚构短文。仅输出：一、优点（引用原文一句）；二、问题表（原句|错因|改后|原因）；三、修改建议（一个可执行练习）。错因只选语序、搭配、关联词、时量、结构助词。不确定的写待核对。不凑错误，不整篇代写、不新增动机或经历。示例行：我学习汉语两小时了。|时量|我学了两个小时的汉语。|若表达已完成的一段活动，时量置于动词后并明确体意义；需结合语境。保留图书馆、两小时、开心、下雨仍去这四项信息。不要假设年级或水平，不给未经标定的分数。限450字。\n短文：昨天我去图书馆。我看书两小时了。我很高兴的。虽然下雨，所以我还是去了。"
+          }
+        ],
+        "temperature": 0.2,
+        "max_tokens": 750
+      },
+      "elapsed_seconds": 2.272,
+      "response": {
+        "id": "a39d0690-779b-4ff0-a66f-80fd8c036a24",
+        "object": "chat.completion",
+        "created": 1792993238,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "一、优点（引用原文一句）\n“虽然下雨，所以我还是去了。”——能尝试用关联词表达转折与坚持，保留“下雨仍去”的信息。\n\n二、问题表\n\n| 原句 | 错因 | 改后 | 原因 |\n|---|---|---|---|\n| 我看书两小时了。 | 时量 | 我看了两个小时的书。 | 表达已完成的一段活动，时量置于动词后并明确体意义；需结合语境。 |\n| 我很高兴的。 | 结构助词 | 我很高兴。 | “很高兴”作谓语，不用“的”；“的”在此结构助词使用不当。 |\n| 虽然下雨，所以我还是去了。 | 关联词 | 虽然下雨，但是我还是去了。 | “虽然”应与“但是/可是”呼应，不能用“所以”。 |\n\n三、修改建议（一个可执行练习）\n用“虽然……但是……”和“动词+了+时量+的+宾语”各造一句，内容限定为图书馆、两小时、开心、下雨仍去四项信息，不增加新经历。"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 188,
+          "completion_tokens": 231,
+          "total_tokens": 419,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 188
+        },
+        "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+      }
+    }
+  ]
+}

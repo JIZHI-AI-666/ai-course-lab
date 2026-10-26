@@ -3,7 +3,9 @@
 !.env.example
 __pycache__/
 *.pyc
+.DS_Store
 .venv/
 venv/
+local_logs/
 chat_log.txt
-.DS_Store
+!/chat_log.txt

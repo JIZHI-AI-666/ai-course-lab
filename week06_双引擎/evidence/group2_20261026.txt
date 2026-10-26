@@ -1,0 +1,25 @@
+=== 测试组 2 ===
+Ollama 当前: 开
+DEEPSEEK_API_KEY: 已配置
+条件: Ollama 关，prefer=local（期望打印回退日志后走云端）
+Ollama 当前: 关
+[首选引擎失败，自动切换] HTTPConnectionPool(host='127.0.0.1', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=11434): Failed to establish a new connection: [Errno 61] Connection refused"))
+[本地失败，自动切换云端] HTTPConnectionPool(host='127.0.0.1', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=11434): Failed to establish a new connection: [Errno 61] Connection refused"))
+[耗时与费用] engine=api  5.59s  prompt=46 completion=199 total=245  约 ¥0.00168400（示意单价，以账单为准）
+**HSK4 阅读理解题**
+
+**课文片段（根据《愚公移山》情节）：**
+
+愚公家门前有两座大山，挡住了他们一家人出门的路。愚公决定把这两座山挖掉。他带着儿子们开始挖山，把挖下来的土石运到很远的海边。智叟笑他太傻，说：“你都这么大年纪了，怎么可能挖掉这两座大山？”愚公回答说：“我死了以后有儿子，儿子死了还有孙子，子子孙孙没有穷尽，可是山不会增高，为什么挖不平呢？”智叟听了，无话可说。
+
+**题目：**
+
+智叟为什么笑愚公？
+
+A. 因为愚公年纪太大了，不可能挖掉两座大山  
+B. 因为愚公把土石运到海边太远了  
+C. 因为愚公的儿子们不愿意帮他挖山  
+D. 因为愚公出门时被山挡住了路  
+
+**正确答案：A**
+已重新打开 Ollama: 开
