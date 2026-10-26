@@ -38,7 +38,7 @@ except ImportError:
 BASE_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com/v1")
 MODEL = os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
 API_KEY_ENV = "DEEPSEEK_API_KEY"
-LOG_PATH = Path(weekpath.root_path("local_logs", "chat_log.txt"))
+LOG_PATH = Path(weekpath.root_path("week04_API", "local_logs", "chat_log.txt"))
 REPORT_PATH = Path(__file__).with_name("参数体验记录_新运行.md")
 
 DEFAULT_QUESTION = (

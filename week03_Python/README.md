@@ -1,8 +1,8 @@
 # 第三周 Python 与 AI 结对编程
 
-必交材料：[脚本](vocab_tool.py)、[AI辅助编程实录](AI辅助编程实录.md)、[生成的练习](../练习.txt)。另有 [语法复习卡片](语法复习卡片.md) 与 [验证记录](验证记录.md)。
+必交材料：[脚本](vocab_tool.py)、[AI辅助编程实录](AI辅助编程实录.md)、[生成的练习](练习.txt)。另有 [语法复习卡片](语法复习卡片.md) 与 [验证记录](验证记录.md)。
 
-2026-10-26 恢复课程整体目录约定：根目录 weekpath.py、data/，默认输出到根目录。请下载整个仓库运行。原 ZIP 与本周 data/ 是 9 月 28 日历史快照。
+按周归档：输入为本周 [data/生词表.csv](data/生词表.csv)，默认输出为本周练习.txt；根目录 weekpath.py 负责统一解析路径。从任意工作目录运行脚本，默认输出位置不变。原 ZIP 放在 [archive/](archive/)，过程原件放在 [evidence/](evidence/)。请下载整个仓库运行。
 
 ```bash
 python week03_Python/vocab_tool.py

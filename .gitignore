@@ -8,4 +8,4 @@ __pycache__/
 venv/
 local_logs/
 chat_log.txt
-!/chat_log.txt
+!/week04_API/chat_log.txt

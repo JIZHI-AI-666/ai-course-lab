@@ -6,30 +6,28 @@
   "required_files": [
     "README.md",
     "作业验收索引.md",
-    "hello.py",
-    "ai任务单.md",
+    "week01_环境/hello.py",
+    "week01_环境/ai任务单.md",
     "week01_环境/环境验证记录.md",
-    "prompt-library/出题.md",
-    "prompt-library/教案扩展.md",
-    "prompt-library/生词筛查.md",
-    "prompt-library/作文批改.md",
-    "prompt-library/课堂活动.md",
-    "prompt-library/语法讲练.md",
-    "prompt-library/留学课业诊断.md",
-    "prompt-library/prompt_iteration_log.md",
-    "prompt-library/evidence/iteration_20261026.json",
+    "week02_提示词/prompt-library/出题.md",
+    "week02_提示词/prompt-library/教案扩展.md",
+    "week02_提示词/prompt-library/生词筛查.md",
+    "week02_提示词/prompt-library/作文批改.md",
+    "week02_提示词/prompt-library/课堂活动.md",
+    "week02_提示词/prompt-library/语法讲练.md",
+    "week02_提示词/prompt-library/留学课业诊断.md",
+    "week02_提示词/prompt-library/prompt_iteration_log.md",
+    "week02_提示词/prompt-library/evidence/iteration_20261026.json",
     "week03_Python/vocab_tool.py",
-    "AI辅助编程实录.md",
     "week03_Python/AI辅助编程实录.md",
-    "练习.txt",
     "week03_Python/练习.txt",
     "week03_Python/填空练习.txt",
     "week03_Python/语法复习卡片.md",
     "week03_Python/验证记录.md",
     "weekpath.py",
-    "data/生词表.csv",
+    "week03_Python/data/生词表.csv",
     "week04_API/week4_api_bot.py",
-    "chat_log.txt",
+    "week04_API/chat_log.txt",
     "week04_API/参数体验记录.md",
     "week04_API/密钥安全自查表.md",
     "week04_API/作业实录.md",
@@ -53,24 +51,17 @@
     "week06_双引擎/week06_test_log.md",
     "week06_双引擎/学科文本_预习RAG.md",
     "week06_双引擎/evidence/group2_20261026.txt",
-    "week06_双引擎/evidence/group3_20261026.txt"
+    "week06_双引擎/evidence/group3_20261026.txt",
+    "week01_环境/README.md",
+    "week02_提示词/README.md",
+    "week03_Python/README.md",
+    "week04_API/README.md",
+    "week05_本地部署/README.md"
   ],
   "identical_copies": [
     [
-      "练习.txt",
-      "week03_Python/练习.txt"
-    ],
-    [
-      "chat_log.txt",
+      "week04_API/chat_log.txt",
       "week04_API/evidence/chat_log_20261012.txt"
-    ],
-    [
-      "week04_API/参数体验记录.md",
-      "参数体验记录.md"
-    ],
-    [
-      "week04_API/密钥安全自查表.md",
-      "密钥安全自查表.md"
     ]
   ],
   "manual_checks": [

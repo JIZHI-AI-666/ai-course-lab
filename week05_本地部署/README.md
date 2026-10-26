@@ -3,7 +3,7 @@
 [主笔记](ollama_notes.md)包含安装排错、按内存选型、五个相同问题的本地与云端比较、术语、隐私和课后思考。实验数据记录日期为2026-10-19。
 
 - [统一题目与评价点](questions.json)
-- [原始回答和指标](results/)
+- [原始回答和指标](results)
 - [复现脚本](run_comparison.py)
 - [Model配置](Modelfile)
 

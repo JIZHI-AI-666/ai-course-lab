@@ -35,22 +35,22 @@ def main():
 
     prompts=['出题','教案扩展','生词筛查','作文批改','课堂活动','语法讲练','留学课业诊断']
     for name in prompts:
-        s=(ROOT/'prompt-library'/f'{name}.md').read_text(encoding='utf-8')
+        s=(ROOT/'week02_提示词/prompt-library'/f'{name}.md').read_text(encoding='utf-8')
         check(all(t in s for t in ['【角色】','【任务】','【要求】','【示例】','适用说明','最佳示例']),f'提示词结构不全：{name}')
-    iterations=json.loads((ROOT/'prompt-library/evidence/iteration_20261026.json').read_text(encoding='utf-8'))['rounds']
+    iterations=json.loads((ROOT/'week02_提示词/prompt-library/evidence/iteration_20261026.json').read_text(encoding='utf-8'))['rounds']
     check([r['round'] for r in iterations]==['R0','R1','R2','R3'],'迭代轮次不足')
     for row in iterations:
         check(bool(row['request']['messages'][0]['content']) and bool(row['response']['choices'][0]['message']['content']),'缺少迭代原始输入输出')
         check(row['response']['choices'][0]['finish_reason']=='stop','迭代回答被截断')
 
-    with (ROOT/'data/生词表.csv').open(encoding='utf-8-sig',newline='') as f:words=list(csv.DictReader(f))
+    with (ROOT/'week03_Python/data/生词表.csv').open(encoding='utf-8-sig',newline='') as f:words=list(csv.DictReader(f))
     selected=[w['词汇'] for w in words if w['HSK等级']=='4']
     check(len(words)==13 and len(selected)==4,'词表计数变化，请复核记录')
-    exercise=(ROOT/'练习.txt').read_text(encoding='utf-8')
+    exercise=(ROOT/'week03_Python/练习.txt').read_text(encoding='utf-8')
     check(all(w in exercise for w in selected),'练习未覆盖全部目标词')
-    record=(ROOT/'AI辅助编程实录.md').read_text(encoding='utf-8')
+    record=(ROOT/'week03_Python/AI辅助编程实录.md').read_text(encoding='utf-8')
     check(all(t in record for t in ['## 1.','## 2.','## 3.','## 4.','```python','原因']),'编程实录四段不全')
-    log=(ROOT/'chat_log.txt').read_text(encoding='utf-8')
+    log=(ROOT/'week04_API/chat_log.txt').read_text(encoding='utf-8')
     check(all(f'三题批量 {n}' in log for n in [1,2,3]),'缺少三题问答日志')
     check(log.count('\nQ: ')>=3 and log.count('\nA: ')>=3,'问答正文不全')
     for params in ['temperature=0.0','temperature=1.5','max_tokens=15','max_tokens=800']:

@@ -10,7 +10,7 @@ import os
 import sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(ROOT, "data")
+DATA_DIR = os.path.join(ROOT, "week03_Python", "data")
 
 
 def _register():

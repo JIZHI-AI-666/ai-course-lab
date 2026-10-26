@@ -44,7 +44,7 @@ def group_by_pos(words):
 
 def gen_grouped_exercises(words, out=None):
     """生成按词性分组的造句练习。"""
-    out = Path(out) if out else weekpath.root_path("练习.txt")
+    out = Path(out) if out else weekpath.root_path("week03_Python", "练习.txt")
     with open(out, "w", encoding="utf-8") as file:
         file.write("HSK 词汇分组造句练习\n")
         file.write("=" * 24 + "\n\n")
@@ -66,7 +66,7 @@ SENTENCE_TEMPLATES = {
 
 def gen_fill_blank_exercises(words, out=None):
     """用目标词替换句子中的对应位置，生成填空题。"""
-    out = Path(out) if out else weekpath.root_path("练习.txt")
+    out = Path(out) if out else weekpath.root_path("week03_Python", "练习.txt")
     with open(out, "w", encoding="utf-8") as file:
         file.write("HSK 词汇填空练习\n")
         file.write("=" * 24 + "\n\n")
@@ -86,7 +86,7 @@ def main():
     parser.add_argument("--mode", choices=("group", "fill"), default="group",
                         help="group：按词性分组造句（默认）；fill：生成填空题")
     parser.add_argument("--level", default="4", help="要生成的 HSK 等级，默认 4")
-    parser.add_argument("--output", help="可选输出文件；默认写入仓库根目录练习.txt")
+    parser.add_argument("--output", help="可选输出文件；默认写入 week03_Python/练习.txt")
     args = parser.parse_args()
 
     words = load_words()
@@ -94,7 +94,7 @@ def main():
     print("总词汇 %d 个，其中 HSK%s 词汇 %d 个，词性分布：%s" %
           (len(words), args.level, len(selected_words), count_by_pos(selected_words)))
 
-    output = Path(args.output) if args.output else Path(weekpath.root_path("练习.txt"))
+    output = Path(args.output) if args.output else Path(weekpath.root_path("week03_Python", "练习.txt"))
     if args.mode == "fill":
         gen_fill_blank_exercises(selected_words, output)
     else:

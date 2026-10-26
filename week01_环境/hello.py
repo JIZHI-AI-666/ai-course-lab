@@ -1,5 +1,8 @@
-"""与根目录 hello.py 相同的课程入口。"""
-from pathlib import Path
-import runpy
+"""W1 Python 环境验证；2026-10-26 补交。"""
+def main():
+    print("Hello, AI Portfolio!")
+    print("课程：人工智能在学习环境中的应用与实践")
+    print("方向：国际中文教育")
+
 if __name__ == "__main__":
-    runpy.run_path(str(Path(__file__).resolve().parents[1] / "hello.py"), run_name="__main__")
+    main()
