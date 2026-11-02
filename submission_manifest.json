@@ -68,7 +68,9 @@
     "week07_RAG/week08_plan.md",
     "week07_RAG/验证记录.md",
     "week07_RAG/evidence/experiment_20261102.json",
-    "week07_RAG/evidence/baseline_20261102.json"
+    "week07_RAG/evidence/baseline_20261102.json",
+    "week07_RAG/demo.py",
+    "week07_RAG/demo.command"
   ],
   "identical_copies": [
     [

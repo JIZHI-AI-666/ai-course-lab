@@ -177,6 +177,41 @@ def rag_qa(question, prefer='local'):
     return result['answer'] + '\n\n【检索依据，需核对模型引用】\n' + sources
 
 
+def display_result(result, console=None):
+    """演示视图只改变排版，不修改模型回答；原始数据可用 --json 查看。"""
+    from rich.console import Console
+    from rich.panel import Panel
+    from rich.text import Text
+    console = console or Console()
+    console.print()
+    console.print(Text('华文小助手 · 知识库问答', style='bold cyan'))
+    console.print(Panel(Text(result['question']), title='问题', border_style='cyan'))
+    console.print(Panel(Text(result['answer']), title='回答', border_style='green', padding=(1, 2)))
+    cited = set(re.findall(r'\[(S\d+)\]', result['answer']))
+    sources = [s for s in result['sources'] if s['citation'] in cited]
+    if not sources:
+        sources = result['sources'][:1]
+        label = '检索片段 · 模型未标注引用，不代表答案已获支持'
+    else:
+        label = '引用原文 · 请对照核验'
+    for source in sources:
+        body = Text(f'[{source["citation"]}] {source["section"]}\n', style='bold')
+        excerpt = source['text']
+        if excerpt.startswith('## '):
+            excerpt = excerpt.partition('\n')[2]
+        # 仅增加分行，保留原文措辞与数值，避免长中文段落挤成一行。
+        body.append(excerpt.replace('，', '，\n'), style='default')
+        body.append(f'\n来源：{source["source"]} · {source["chunk_id"]}', style='dim')
+        console.print(Panel(body, title=label, border_style='blue'))
+    if result['invalid_citations']:
+        console.print(Text('引用编号无效：' + '、'.join(result['invalid_citations']), style='yellow'))
+    actual = {'api':'云端', 'local':'本地'}.get(result['actual_engine'], '未知')
+    console.print(Text(f'{actual} · {result["model"]}  |  生成 {result["elapsed_seconds"]:.2f} 秒  |  检索 {result["retrieval_seconds"]:.2f} 秒', style='dim'))
+    if result['actual_engine'] != result['requested_engine']:
+        console.print(Text('首选引擎失败，本次已自动切换引擎。', style='yellow'))
+    console.print()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('question', nargs='?', default='根据GF 0025—2021，四级累计词汇量是多少？')
@@ -184,13 +219,17 @@ def main():
     parser.add_argument('--k', type=int, default=3)
     parser.add_argument('--rebuild', action='store_true')
     parser.add_argument('--retrieve-only', action='store_true')
+    parser.add_argument('--json', action='store_true', help='输出完整原始JSON，供调试或存档')
     args = parser.parse_args()
     get_retriever(args.k, args.rebuild)
     if args.retrieve_only:
         print(retrieve(args.question, args.k))
     else:
         result = rag_qa_details(args.question, args.prefer, args.k)
-        print(json.dumps(result, ensure_ascii=False, indent=2))
+        if args.json:
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+        else:
+            display_result(result)
 
 
 if __name__ == '__main__':

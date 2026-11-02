@@ -6,3 +6,4 @@ chromadb==1.5.9
 openai==3.42.1
 requests==2.34.2
 python-dotenv==1.2.4
+rich==15.0.0
