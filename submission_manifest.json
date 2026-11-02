@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "default_branch": "main",
-  "scope": "W1-W6",
+  "scope": "W1-W7",
   "note": "文件完整性与课堂口头验收分别确认；不承诺评分结果。",
   "required_files": [
     "README.md",
@@ -56,7 +56,19 @@
     "week02_提示词/README.md",
     "week03_Python/README.md",
     "week04_API/README.md",
-    "week05_本地部署/README.md"
+    "week05_本地部署/README.md",
+    "week07_RAG/README.md",
+    "week07_RAG/rag_qa.py",
+    "week07_RAG/requirements.txt",
+    "week07_RAG/run_experiments.py",
+    "week07_RAG/test_rag_qa.py",
+    "week07_RAG/data/等级标准节选.txt",
+    "week07_RAG/data/README.md",
+    "week07_RAG/hallucination_log.md",
+    "week07_RAG/week08_plan.md",
+    "week07_RAG/验证记录.md",
+    "week07_RAG/evidence/experiment_20261102.json",
+    "week07_RAG/evidence/baseline_20261102.json"
   ],
   "identical_copies": [
     [

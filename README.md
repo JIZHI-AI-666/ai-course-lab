@@ -12,6 +12,7 @@
 | W4 | 第一次 API 调用 | [week4_api_bot.py](week04_API/week4_api_bot.py)、[chat_log.txt](week04_API/chat_log.txt)、[参数体验记录](week04_API/参数体验记录.md)、[密钥安全自查表](week04_API/密钥安全自查表.md) |
 | W5 | 本地部署 | [ollama_notes.md](week05_本地部署/ollama_notes.md)、[统一题目](week05_本地部署/questions.json)、[原始回答与指标](week05_本地部署/results) |
 | W6 | 双引擎封装 | [代码与运行入口](week06_双引擎/README.md)、[五组边界测试](week06_双引擎/week06_test_log.md)、[RAG学科文本](week06_双引擎/学科文本_预习RAG.md) |
+| W7 | RAG 学科问答 | [运行与交付入口](week07_RAG/README.md)、[六组幻觉对照](week07_RAG/hallucination_log.md)、[第八周规划](week07_RAG/week08_plan.md) |
 
 [逐项验收索引](作业验收索引.md) · [文件清单](submission_manifest.json) · [自查结果](验收结果.md)
 
@@ -25,6 +26,7 @@ ai-course-lab/
 ├── week04_API/         API代码、chat_log.txt、实验记录、evidence/、archive/
 ├── week05_本地部署/    部署笔记、questions.json、results/
 ├── week06_双引擎/      llm.py、边界测试、学科文本、evidence/
+├── week07_RAG/         RAG代码、data/、六组对照、evidence/、W8规划
 ├── tools/             仓库完整性检查
 ├── weekpath.py         跨周导入与配置加载
 └── README.md / 作业验收索引.md / submission_manifest.json / 验收结果.md
@@ -51,4 +53,4 @@ W5 复现见 [本地部署说明](week05_本地部署/README.md)。日志与结�
 
 ## 验收边界
 
-完整性程序检查文件、链接、同步副本和实验结构，不代替教师打分。本人逐行讲解、现场运行、雨课堂链接登记与截止时间由教师验收。第一、二周原始讲义未提供，相关材料按现有课程上下文整理；第三至六周按所提供讲义对应。
+完整性程序检查文件、链接、同步副本和实验结构，不代替教师打分。本人逐行讲解、现场运行、雨课堂链接登记与截止时间由教师验收。第一、二周原始讲义未提供，相关材料按现有课程上下文整理；第三至七周按所提供讲义对应。

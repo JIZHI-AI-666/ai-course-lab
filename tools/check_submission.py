@@ -1,4 +1,4 @@
-"""无网络检查前六周交付文件、链接、日志与实验结构；不能替代教师评分。"""
+"""无网络检查前七周交付文件、链接、日志与实验结构；不能替代教师评分。"""
 import csv
 import json
 from pathlib import Path
@@ -67,6 +67,17 @@ def main():
         rows=data['questions']
         check({q['id']:q['prompt'] for q in rows}==expected,'不同模型题目不一致：'+file)
         check(all(q['answer'] and q['elapsed_seconds']>0 for q in rows),'回答或耗时缺失：'+file)
+    w7=ROOT/'week07_RAG'
+    evidence=json.loads((w7/'evidence/experiment_20261102.json').read_text(encoding='utf-8'))
+    check(len(evidence['questions'])>=5,'W7对照不足五组')
+    for row in evidence['questions']:
+        check(set(row['runs'])=={'bare_local','bare_api','rag_local','rag_api'},'W7四路实验缺项：'+row['id'])
+        for mode,run in row['runs'].items():
+            check(bool(run['answer']) and run['elapsed_seconds']>0,'W7缺少实际回答或耗时')
+            check(run['actual_engine']==('api' if mode.endswith('api') else 'local'),'W7实际引擎与对比标签不符')
+            if mode.startswith('rag'):
+                check(bool(run['sources']) and all(s['text'] and s['chunk_id'] for s in run['sources']),'W7缺少完整检索依据')
+    check('chroma_db/' in (ROOT/'.gitignore').read_text(),'W7数据库未忽略')
     check('.env' in (ROOT/'.gitignore').read_text(encoding='utf-8'),'未忽略.env')
     if errors:
         print('\n'.join('FAIL '+e for e in errors))

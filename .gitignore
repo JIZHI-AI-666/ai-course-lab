@@ -9,3 +9,6 @@ venv/
 local_logs/
 chat_log.txt
 !/week04_API/chat_log.txt
+
+# 第七周本地向量索引（由语料重建）
+chroma_db/
