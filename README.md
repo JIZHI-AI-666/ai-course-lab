@@ -13,7 +13,7 @@
 | W5 | 本地部署 | [ollama_notes.md](week05_本地部署/ollama_notes.md)、[统一题目](week05_本地部署/questions.json)、[原始回答与指标](week05_本地部署/results) |
 | W6 | 双引擎封装 | [代码与运行入口](week06_双引擎/README.md)、[五组边界测试](week06_双引擎/week06_test_log.md)、[RAG学科文本](week06_双引擎/学科文本_预习RAG.md) |
 | W7 | RAG 学科问答 | [运行与交付入口](week07_RAG/README.md)、[六组幻觉对照](week07_RAG/hallucination_log.md)、[第八周规划](week07_RAG/week08_plan.md) |
-| W8 | 阶段项目一 · 助手 v1.0 | [助手说明与四段式 README](week08_助手v1.0/README.md)、[assistant_v1.py](week08_助手v1.0/assistant_v1.py)、[演示记录](week08_助手v1.0/answer_log.md)、[5行流水线映射表](week08_助手v1.0/rag_pipeline_mapping.md) |
+| W8 | 阶段项目一 · 助手 v1.0 | [助手说明与四段式 README](week08_助手v1.0/README.md)、[assistant_v1.py](week08_助手v1.0/assistant_v1.py)、[演示记录](week08_助手v1.0/answer_log.md)、[5行流水线映射表](week08/映射表.md)、[互评记录](week08/peer_review.md) |
 
 [逐项验收索引](作业验收索引.md) · [文件清单](submission_manifest.json) · [自查结果](验收结果.md)
 

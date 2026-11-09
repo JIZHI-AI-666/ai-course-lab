@@ -75,9 +75,12 @@
     "week08_助手v1.0/assistant_v1.py",
     "week08_助手v1.0/run_demo.py",
     "week08_助手v1.0/answer_log.md",
-    "week08_助手v1.0/rag_pipeline_mapping.md",
+    "week08/映射表.md",
+    "week08/peer_review.md",
     "week08_助手v1.0/requirements.txt",
-    "week08_助手v1.0/evidence/demo_run_20261109.json"
+    "week08_助手v1.0/evidence/demo_run_20261109.json",
+    "week08/作业2_已知问题为什么诚实写.md",
+    "week08/W9工具清单.md"
   ],
   "identical_copies": [
     [

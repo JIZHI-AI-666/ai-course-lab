@@ -40,8 +40,9 @@
 | `run_demo.py` | 采集演示记录，原始输出存 JSON，不改写模型回答 |
 | `answer_log.md` | 演示记录：7 条，四要素齐全，含失败与不一致的诚实结论 |
 | `evidence/demo_run_20261109.json` | 本次演示的原始回答、引擎、耗时、检索依据 |
-| `rag_pipeline_mapping.md` | 官方 RAG 流水线 5 行映射表（全员最低要求） |
 | `requirements.txt` | 本周依赖清单 |
+| `../week08/映射表.md` | 官方 RAG 流水线 5 行映射表（全员最低要求） |
+| `../week08/peer_review.md` | 第 8 周互评记录（评阅李悦同学作品集，四维度） |
 | `../week06_双引擎/llm.py` | W6 双引擎：写答案 |
 | `../week07_RAG/rag_qa.py` | W7 知识库：找资料 |
 
