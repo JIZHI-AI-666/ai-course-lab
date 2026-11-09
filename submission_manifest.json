@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "default_branch": "main",
-  "scope": "W1-W7",
+  "scope": "W1-W8",
   "note": "文件完整性与课堂口头验收分别确认；不承诺评分结果。",
   "required_files": [
     "README.md",
@@ -70,7 +70,14 @@
     "week07_RAG/evidence/experiment_20261102.json",
     "week07_RAG/evidence/baseline_20261102.json",
     "week07_RAG/demo.py",
-    "week07_RAG/demo.command"
+    "week07_RAG/demo.command",
+    "week08_助手v1.0/README.md",
+    "week08_助手v1.0/assistant_v1.py",
+    "week08_助手v1.0/run_demo.py",
+    "week08_助手v1.0/answer_log.md",
+    "week08_助手v1.0/rag_pipeline_mapping.md",
+    "week08_助手v1.0/requirements.txt",
+    "week08_助手v1.0/evidence/demo_run_20261109.json"
   ],
   "identical_copies": [
     [

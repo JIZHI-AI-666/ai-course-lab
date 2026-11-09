@@ -1,2 +1,15 @@
+# 阶段项目一 · 学科智能问答助手 v1.0 依赖
+# W7 知识库：langchain 全家桶 + chromadb
+langchain>=0.3
+langchain-community>=0.3
+langchain-text-splitters>=0.3
+langchain-core>=0.3
+langchain-chroma>=0.2
+langchain-ollama>=0.2
+chromadb>=1.0
+# W4–W6 双引擎与配置
 openai>=1.0
+requests>=2.31
 python-dotenv>=1.0
+# 终端排版
+rich>=13.0

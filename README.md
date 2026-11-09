@@ -13,6 +13,7 @@
 | W5 | 本地部署 | [ollama_notes.md](week05_本地部署/ollama_notes.md)、[统一题目](week05_本地部署/questions.json)、[原始回答与指标](week05_本地部署/results) |
 | W6 | 双引擎封装 | [代码与运行入口](week06_双引擎/README.md)、[五组边界测试](week06_双引擎/week06_test_log.md)、[RAG学科文本](week06_双引擎/学科文本_预习RAG.md) |
 | W7 | RAG 学科问答 | [运行与交付入口](week07_RAG/README.md)、[六组幻觉对照](week07_RAG/hallucination_log.md)、[第八周规划](week07_RAG/week08_plan.md) |
+| W8 | 阶段项目一 · 助手 v1.0 | [助手说明与四段式 README](week08_助手v1.0/README.md)、[assistant_v1.py](week08_助手v1.0/assistant_v1.py)、[演示记录](week08_助手v1.0/answer_log.md)、[5行流水线映射表](week08_助手v1.0/rag_pipeline_mapping.md) |
 
 [逐项验收索引](作业验收索引.md) · [文件清单](submission_manifest.json) · [自查结果](验收结果.md)
 
@@ -27,6 +28,7 @@ ai-course-lab/
 ├── week05_本地部署/    部署笔记、questions.json、results/
 ├── week06_双引擎/      llm.py、边界测试、学科文本、evidence/
 ├── week07_RAG/         RAG代码、data/、六组对照、evidence/、W8规划
+├── week08_助手v1.0/    阶段项目一：assistant_v1.py、四段式README、演示记录、映射表
 ├── tools/             仓库完整性检查
 ├── weekpath.py         跨周导入与配置加载
 └── README.md / 作业验收索引.md / submission_manifest.json / 验收结果.md
@@ -46,6 +48,7 @@ python -m pip install -r requirements.txt
 # 复制 .env.example 为 .env，在本机填入自己的密钥
 python week04_API/week4_api_bot.py --batch
 python week04_API/week4_api_bot.py --experiment
+python week08_助手v1.0/assistant_v1.py
 python tools/check_submission.py
 ```
 
@@ -53,4 +56,4 @@ W5 复现见 [本地部署说明](week05_本地部署/README.md)。日志与结�
 
 ## 验收边界
 
-完整性程序检查文件、链接、同步副本和实验结构，不代替教师打分。本人逐行讲解、现场运行、雨课堂链接登记与截止时间由教师验收。第一、二周原始讲义未提供，相关材料按现有课程上下文整理；第三至七周按所提供讲义对应。
+完整性程序检查文件、链接、同步副本和实验结构，不代替教师打分。本人逐行讲解、现场运行、雨课堂链接登记与截止时间由教师验收。第一、二周原始讲义未提供，相关材料按现有课程上下文整理；第三至八周按所提供讲义对应。
