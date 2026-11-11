@@ -41,7 +41,9 @@
 | `answer_log.md` | 演示记录：7 条，四要素齐全，含失败与不一致的诚实结论 |
 | `evidence/demo_run_20261109.json` | 本次演示的原始回答、引擎、耗时、检索依据 |
 | `requirements.txt` | 本周依赖清单 |
-| `../week08/映射表.md` | 官方 RAG 流水线 5 行映射表（全员最低要求） |
+| `../week08/rag_mapping.md` | 官方 RAG 流水线 5 行映射表（全员最低要求） |
+| `../week08/read_notes.md` | 官方文档与 llm-universe C3/C4 的读数笔记 |
+| `../week08/reflect.md` | 300 字反思：与官方 2-Step 的差距、Agentic 需要补什么、许可证与 .env 红线的共同点 |
 | `../week08/peer_review.md` | 第 8 周互评记录（评阅李悦同学作品集，四维度） |
 | `../week06_双引擎/llm.py` | W6 双引擎：写答案 |
 | `../week07_RAG/rag_qa.py` | W7 知识库：找资料 |
