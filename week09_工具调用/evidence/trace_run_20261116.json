@@ -1,0 +1,154 @@
+{
+  "model": "qwen2.5:1.5b",
+  "base_url": "http://localhost:11434/v1",
+  "cases": [
+    {
+      "label": "复合问句-编号列表式",
+      "question": "请依次查询两件事：1. '把'字的 HSK 等级是多少？2. 现在的时间是多少？",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"hsk_level\", \"args\": [\"把\"]}\n{\"tool\": \"get_time\", \"args\": []}",
+          "parsed_calls": [
+            {
+              "tool": "hsk_level",
+              "args": [
+                "把"
+              ]
+            },
+            {
+              "tool": "get_time",
+              "args": []
+            }
+          ]
+        },
+        {
+          "tool": "hsk_level",
+          "args": [
+            "把"
+          ],
+          "result": "把 是 3 级"
+        },
+        {
+          "tool": "get_time",
+          "args": [],
+          "result": "2026-11-16 13:32:10.536752"
+        },
+        {
+          "model_output": "把的 HSK 等级是 3 级；当前时间是 2026年11月16日13时32分10秒。",
+          "parsed_calls": []
+        }
+      ],
+      "answer": "把的 HSK 等级是 3 级；当前时间是 2026年11月16日13时32分10秒。"
+    },
+    {
+      "label": "算术题",
+      "question": "帮我算一下 35*24 等于多少",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"calc\", \"args\": [\"35*24\"]}",
+          "parsed_calls": [
+            {
+              "tool": "calc",
+              "args": [
+                "35*24"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "calc",
+          "args": [
+            "35*24"
+          ],
+          "result": "840"
+        },
+        {
+          "model_output": "840",
+          "parsed_calls": []
+        }
+      ],
+      "answer": "840"
+    },
+    {
+      "label": "越权表达式被拒绝",
+      "question": "帮我算一下 __import__('os').getcwd() 的值",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"calc\", \"args\": [\"os.getcwd()\"]}",
+          "parsed_calls": [
+            {
+              "tool": "calc",
+              "args": [
+                "os.getcwd()"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "calc",
+          "args": [
+            "os.getcwd()"
+          ],
+          "result": "拒绝计算：只允许数字与 + - * / ** % 运算"
+        },
+        {
+          "model_output": "{\"tool\": \"get_time\", \"args\": []}",
+          "parsed_calls": [
+            {
+              "tool": "get_time",
+              "args": []
+            }
+          ]
+        },
+        {
+          "tool": "get_time",
+          "args": [],
+          "result": "2026-11-16 13:32:12.044559"
+        },
+        {
+          "model_output": "{\"tool\": \"calc\", \"args\": [\"os.getcwd()\"]}",
+          "parsed_calls": [],
+          "note": "max_calls 到顶强制收口"
+        }
+      ],
+      "answer": "{\"tool\": \"calc\", \"args\": [\"os.getcwd()\"]}"
+    },
+    {
+      "label": "口语式复合问句-会诊素材",
+      "question": "'把'字是几级？现在几点？",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"hsk_level\", \"args\": [\"把\"]}",
+          "parsed_calls": [
+            {
+              "tool": "hsk_level",
+              "args": [
+                "把"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "hsk_level",
+          "args": [
+            "把"
+          ],
+          "result": "把 是 3 级"
+        },
+        {
+          "model_output": "现在是几点？",
+          "parsed_calls": []
+        }
+      ],
+      "answer": "现在是几点？"
+    }
+  ]
+}

@@ -14,6 +14,7 @@
 | W6 | 双引擎封装 | [代码与运行入口](week06_双引擎/README.md)、[五组边界测试](week06_双引擎/week06_test_log.md)、[RAG学科文本](week06_双引擎/学科文本_预习RAG.md) |
 | W7 | RAG 学科问答 | [运行与交付入口](week07_RAG/README.md)、[六组幻觉对照](week07_RAG/hallucination_log.md)、[第八周规划](week07_RAG/week08_plan.md) |
 | W8 | 阶段项目一 · 助手 v1.0 | [助手说明与四段式 README](week08_助手v1.0/README.md)、[assistant_v1.py](week08_助手v1.0/assistant_v1.py)、[演示记录](week08_助手v1.0/answer_log.md)、[5行流水线映射表](week08/rag_mapping.md)、[读数笔记](week08/read_notes.md)、[反思](week08/reflect.md)、[互评记录](week08/peer_review.md) |
+| W9 | 智能体原理 · 工具调用 | [周入口 README](week09_工具调用/README.md)、[tool_agent.py](week09_工具调用/tool_agent.py)、[3条调用轨迹记录](week09_工具调用/call_log.md)、[原始轨迹JSON](week09_工具调用/evidence/trace_run_20261116.json) |
 
 [逐项验收索引](作业验收索引.md) · [文件清单](submission_manifest.json) · [自查结果](验收结果.md)
 
@@ -29,6 +30,7 @@ ai-course-lab/
 ├── week06_双引擎/      llm.py、边界测试、学科文本、evidence/
 ├── week07_RAG/         RAG代码、data/、六组对照、evidence/、W8规划
 ├── week08_助手v1.0/    阶段项目一：assistant_v1.py、四段式README、演示记录、映射表
+├── week09_工具调用/    手写工具调用循环：tool_agent.py、3条调用轨迹、evidence/
 ├── tools/             仓库完整性检查
 ├── weekpath.py         跨周导入与配置加载
 └── README.md / 作业验收索引.md / submission_manifest.json / 验收结果.md
@@ -49,6 +51,9 @@ python -m pip install -r requirements.txt
 python week04_API/week4_api_bot.py --batch
 python week04_API/week4_api_bot.py --experiment
 python week08_助手v1.0/assistant_v1.py
+# W9 工具调用：本机 Ollama 口径（无需密钥）
+# export DEEPSEEK_BASE_URL=http://localhost:11434/v1 DEEPSEEK_MODEL=qwen2.5:1.5b
+python week09_工具调用/tool_agent.py
 python tools/check_submission.py
 ```
 
