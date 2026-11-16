@@ -1,0 +1,234 @@
+{
+  "model": "qwen2.5:1.5b",
+  "base_url": "http://localhost:11434/v1",
+  "tools": [
+    "calc",
+    "get_time",
+    "hsk_level",
+    "text_difficulty"
+  ],
+  "cases": [
+    {
+      "label": "口语式复合问句-会诊素材",
+      "run": 1,
+      "question": "'把'字是几级？现在几点？",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"hsk_level\", \"args\": [\"把\"]}",
+          "parsed_calls": [
+            {
+              "tool": "hsk_level",
+              "args": [
+                "把"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "hsk_level",
+          "args": [
+            "把"
+          ],
+          "result": "把 是 3 级"
+        },
+        {
+          "model_output": "现在是14:25。",
+          "parsed_calls": []
+        }
+      ],
+      "answer": "现在是14:25。"
+    },
+    {
+      "label": "口语式复合问句-会诊素材",
+      "run": 2,
+      "question": "'把'字是几级？现在几点？",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"hsk_level\", \"args\": [\"把\"]}",
+          "parsed_calls": [
+            {
+              "tool": "hsk_level",
+              "args": [
+                "把"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "hsk_level",
+          "args": [
+            "把"
+          ],
+          "result": "把 是 3 级"
+        },
+        {
+          "model_output": "{\"tool\": \"get_time\", \"args\": []}",
+          "parsed_calls": [
+            {
+              "tool": "get_time",
+              "args": []
+            }
+          ]
+        },
+        {
+          "tool": "get_time",
+          "args": [],
+          "result": "2026-11-16 13:41:13.778620"
+        },
+        {
+          "model_output": "{\"tool\": \"get_time\", \"args\": []}",
+          "parsed_calls": [],
+          "note": "max_calls 到顶强制收口"
+        }
+      ],
+      "answer": "{\"tool\": \"get_time\", \"args\": []}"
+    },
+    {
+      "label": "口语式复合问句-会诊素材",
+      "run": 3,
+      "question": "'把'字是几级？现在几点？",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"hsk_level\", \"args\": [\"把\"]}",
+          "parsed_calls": [
+            {
+              "tool": "hsk_level",
+              "args": [
+                "把"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "hsk_level",
+          "args": [
+            "把"
+          ],
+          "result": "把 是 3 级"
+        },
+        {
+          "model_output": "现在是几点？现在是13:15。",
+          "parsed_calls": []
+        }
+      ],
+      "answer": "现在是几点？现在是13:15。"
+    },
+    {
+      "label": "口语式复合问句-会诊素材",
+      "run": 4,
+      "question": "'把'字是几级？现在几点？",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"hsk_level\", \"args\": [\"把\"]}",
+          "parsed_calls": [
+            {
+              "tool": "hsk_level",
+              "args": [
+                "把"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "hsk_level",
+          "args": [
+            "把"
+          ],
+          "result": "把 是 3 级"
+        },
+        {
+          "model_output": "现在是几点？请稍等，我查询了一下您的问题，现在是北京时间13点10分。",
+          "parsed_calls": []
+        }
+      ],
+      "answer": "现在是几点？请稍等，我查询了一下您的问题，现在是北京时间13点10分。"
+    },
+    {
+      "label": "口语式复合问句-会诊素材",
+      "run": 5,
+      "question": "'把'字是几级？现在几点？",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"hsk_level\", \"args\": [\"把\"]}",
+          "parsed_calls": [
+            {
+              "tool": "hsk_level",
+              "args": [
+                "把"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "hsk_level",
+          "args": [
+            "把"
+          ],
+          "result": "把 是 3 级"
+        },
+        {
+          "model_output": "现在是 14:22。",
+          "parsed_calls": []
+        }
+      ],
+      "answer": "现在是 14:22。"
+    },
+    {
+      "label": "口语式复合问句-会诊素材",
+      "run": 6,
+      "question": "'把'字是几级？现在几点？",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"hsk_level\", \"args\": [\"把\"]}",
+          "parsed_calls": [
+            {
+              "tool": "hsk_level",
+              "args": [
+                "把"
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "hsk_level",
+          "args": [
+            "把"
+          ],
+          "result": "把 是 3 级"
+        },
+        {
+          "model_output": "{\"tool\": \"get_time\", \"args\": []}",
+          "parsed_calls": [
+            {
+              "tool": "get_time",
+              "args": []
+            }
+          ]
+        },
+        {
+          "tool": "get_time",
+          "args": [],
+          "result": "2026-11-16 13:41:15.955357"
+        },
+        {
+          "model_output": "{\"tool\": \"get_time\", \"args\": []}",
+          "parsed_calls": [],
+          "note": "max_calls 到顶强制收口"
+        }
+      ],
+      "answer": "{\"tool\": \"get_time\", \"args\": []}"
+    }
+  ]
+}

@@ -14,7 +14,7 @@
 | W6 | 双引擎封装 | [代码与运行入口](week06_双引擎/README.md)、[五组边界测试](week06_双引擎/week06_test_log.md)、[RAG学科文本](week06_双引擎/学科文本_预习RAG.md) |
 | W7 | RAG 学科问答 | [运行与交付入口](week07_RAG/README.md)、[六组幻觉对照](week07_RAG/hallucination_log.md)、[第八周规划](week07_RAG/week08_plan.md) |
 | W8 | 阶段项目一 · 助手 v1.0 | [助手说明与四段式 README](week08_助手v1.0/README.md)、[assistant_v1.py](week08_助手v1.0/assistant_v1.py)、[演示记录](week08_助手v1.0/answer_log.md)、[5行流水线映射表](week08/rag_mapping.md)、[读数笔记](week08/read_notes.md)、[反思](week08/reflect.md)、[互评记录](week08/peer_review.md) |
-| W9 | 智能体原理 · 工具调用 | [周入口 README](week09_工具调用/README.md)、[tool_agent.py](week09_工具调用/tool_agent.py)、[3条调用轨迹记录](week09_工具调用/call_log.md)、[原始轨迹JSON](week09_工具调用/evidence/trace_run_20261116.json) |
+| W9 | 智能体原理 · 工具调用 | [周入口 README](week09_工具调用/README.md)、[tool_agent.py](week09_工具调用/tool_agent.py)（4 工具）、[3条调用轨迹记录](week09_工具调用/call_log.md)、[原始轨迹JSON](week09_工具调用/evidence/trace_run_20261116.json)、[作业1 失败案例会诊](week09_工具调用/作业1_失败案例会诊.md)、[作业2 第4个工具](week09_工具调用/作业2_第4个工具_课文难度评估.md)、[作业3 W10预习](week09_工具调用/作业3_W10预习_三句辨析.md)、[作业4 smolagents加分项](week09_工具调用/作业4_smolagents加分项.md) |
 
 [逐项验收索引](作业验收索引.md) · [文件清单](submission_manifest.json) · [自查结果](验收结果.md)
 
@@ -30,7 +30,7 @@ ai-course-lab/
 ├── week06_双引擎/      llm.py、边界测试、学科文本、evidence/
 ├── week07_RAG/         RAG代码、data/、六组对照、evidence/、W8规划
 ├── week08_助手v1.0/    阶段项目一：assistant_v1.py、四段式README、演示记录、映射表
-├── week09_工具调用/    手写工具调用循环：tool_agent.py、3条调用轨迹、evidence/
+├── week09_工具调用/    手写工具调用循环：tool_agent.py（4工具）、轨迹与会诊、课后作业1-4、evidence/
 ├── tools/             仓库完整性检查
 ├── weekpath.py         跨周导入与配置加载
 └── README.md / 作业验收索引.md / submission_manifest.json / 验收结果.md

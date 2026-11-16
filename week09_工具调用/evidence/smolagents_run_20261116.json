@@ -1,0 +1,10 @@
+{
+  "framework": "smolagents ToolCallingAgent",
+  "model": "qwen2.5:1.5b",
+  "base_url": "http://localhost:11434/v1",
+  "question": "'把'字是 HSK 几级词汇？",
+  "started_at": "2026-11-16 13:45:57.464450",
+  "ok": true,
+  "answer": "把 是 3 级",
+  "finished_at": "2026-11-16 13:45:59.876144"
+}

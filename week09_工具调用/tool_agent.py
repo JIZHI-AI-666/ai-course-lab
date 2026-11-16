@@ -22,6 +22,7 @@ weekpath.load_env()
 import openai  # noqa: E402
 
 VOCAB = weekpath.data_path("生词表.csv")
+W9_DATA = weekpath.root_path("week09_工具调用", "data")
 
 # 默认走 DeepSeek 云端；本机演示可通过环境变量切到 Ollama（OpenAI 兼容端点），例如：
 #   DEEPSEEK_BASE_URL=http://localhost:11434/v1
@@ -94,10 +95,64 @@ def hsk_level(word):
     return "未找到 %s" % word
 
 
-TOOLS = {"get_time": get_time, "calc": calc, "hsk_level": hsk_level}
+# ---- 作业 2 · 第 4 个工具：课文难度评估 ----
+def text_difficulty(source, target_level):
+    """评估课文对目标 HSK 等级学生的难度。
 
-SYS = ("你是国际中文助教。可用工具只有这 3 个：get_time（查当前时间，无参数）、"
-       "calc（四则运算，如 calc('35*24')）、hsk_level（查生词 HSK 等级，如 hsk_level('把')）。"
+    source：课文原文，或 W9 数据目录下的课文文件名（如 '愚公移山'，读 愚公移山.txt）；
+    target_level：目标等级，1-9 的整数。
+    口径：只统计课程生词表（week03_Python/data/生词表.csv）收录且在课文中出现的词，
+    不做全文分词——生词表外的词不参与统计，这是本工具的已知边界，如实写进返回值。
+    覆盖率 = 出现词汇中等级不超过目标的占比；等级高于目标的列入超纲词。"""
+    try:
+        level = int(target_level)
+    except (TypeError, ValueError):
+        return "拒绝评估：目标等级必须是 1-9 的整数，收到 %r" % (target_level,)
+    if not 1 <= level <= 9:
+        return "拒绝评估：目标等级超出 1-9，收到 %d" % level
+    text = str(source)
+    candidate = os.path.join(W9_DATA, "%s.txt" % str(source).strip())
+    if os.path.isfile(candidate):
+        with open(candidate, encoding="utf-8") as f:
+            text = f.read()
+    if not text.strip():
+        return "拒绝评估：课文为空"
+    covered, beyond = [], []
+    with open(VOCAB, encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            word = row["词汇"].strip()
+            if word and word in text:
+                (covered if int(row["HSK等级"]) <= level else beyond).append(
+                    "%s(%s级)" % (word, row["HSK等级"]))
+    found = len(covered) + len(beyond)
+    if not found:
+        return "课文 %d 字：生词表词汇在课文中一个都没出现，覆盖率无法统计。" % len(text)
+    rate = len(covered) / found * 100
+    result = ("课文 %d 字，目标 HSK%d。生词表词汇出现 %d 个，"
+              "其中不超过 %d 级的 %d 个，覆盖率 %.1f%%；"
+              % (len(text), level, found, level, len(covered), rate))
+    if beyond:
+        result += "超纲词 %d 个：%s。" % (len(beyond), "、".join(sorted(beyond)))
+    else:
+        result += "无超纲词。"
+    result += "（口径：仅统计生词表收录词汇，生词表外词汇未参与统计）"
+    return result
+
+
+TOOLS = {"get_time": get_time, "calc": calc, "hsk_level": hsk_level,
+         "text_difficulty": text_difficulty}
+
+# 回喂文案：骨架原文案是「工具返回：{结果}。请据此作答。」。
+# 作业 2 实测（1.5B 小模型，5 连跑复现）：工具返回较长（如 text_difficulty 的评估报告）时，
+# 原文案下模型 5/5 复读调用直到 max_calls 收口；把「结果已是最终数据、请直接作答」写明后 5/5 正常作答。
+# 对照实验数据见 evidence/homework1_failures_20261116.json 与作业文档。
+FEED_TEMPLATE = ("工具返回（这是全部工具结果，已经是最终数据）：\n%s\n"
+                 "请直接依据以上结果用中文回答用户的问题，不要再输出任何调用 JSON。")
+
+SYS = ("你是国际中文助教。可用工具只有这 4 个：get_time（查当前时间，无参数）、"
+       "calc（四则运算，如 calc('35*24')）、hsk_level（查生词 HSK 等级，如 hsk_level('把')）、"
+       "text_difficulty（课文难度评估：输入课文原文或课文文件名 + 目标等级数字，"
+       "如 text_difficulty('愚公移山', 4)）。"
        '如需调用，只输出一行 JSON，格式：{"tool": "工具名", "args": [参数]}；'
        "一次只调用一个工具，绝不编造不存在的工具名；无需工具时直接回答。")
 
@@ -160,7 +215,7 @@ def run(user_msg, max_calls=2):
                 results.append("工具执行失败：%s" % e)
                 steps.append({"tool": call["tool"], "args": args, "error": str(e)})
         msgs += [{"role": "assistant", "content": txt},
-                 {"role": "user", "content": "工具返回：%s。请据此作答。" % "；".join(results)}]
+                 {"role": "user", "content": FEED_TEMPLATE % "；".join(results)}]
     # 达到上限后强制收口，避免无限循环烧 token
     txt = get_client().chat.completions.create(
         model=MODEL, messages=msgs).choices[0].message.content

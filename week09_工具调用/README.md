@@ -8,9 +8,10 @@
   - `get_time`：查当前系统时间，让模型「知道现在」；
   - `calc`：白名单 AST 四则运算，**绝不裸 eval**——只放行数字与 `+ - * / ** %`，越权表达式返回「拒绝计算」；
   - `hsk_level`：查生词表 CSV 返回 HSK 等级，确定数据靠查表不靠模型记。
+- 课后作业 2 新增第 4 个工具 `text_difficulty`（课文难度评估）：输入课文/文件名 + 目标等级，输出生词覆盖率与超纲词列表，素材《愚公移山》＋课程生词表；等级越界在工具侧拒绝。
 - `parse_calls` 三重容错：剥 ` ```json ` 围栏、跨行抓 JSON 块、多行并列调用逐块提取（1.5B 小模型实测常一口气点名两个工具）。
 - 一轮内执行模型点名的全部工具并合并回喂；工具异常转成文字继续，不让单次失败打断循环。
-- 引擎口径与讲义一致：默认云端 `deepseek-chat`，设 `DEEPSEEK_BASE_URL`/`DEEPSEEK_MODEL` 即切本机 Ollama（OpenAI 兼容端点）；本地端点自动放开代理对 localhost 的拦截。
+- 回喂文案 `FEED_TEMPLATE` 经对照实验改进（0/5 → 5/5 正常收口，见作业 2 文档）；引擎口径与讲义一致：默认云端 `deepseek-chat`，设 `DEEPSEEK_BASE_URL`/`DEEPSEEK_MODEL` 即切本机 Ollama（OpenAI 兼容端点）；本地端点自动放开代理对 localhost 的拦截。
 
 ## 怎么装
 
@@ -26,25 +27,37 @@
 python week09_工具调用/tool_agent.py
 # 自带问题
 python week09_工具调用/tool_agent.py 帮我算一下 35*24 等于多少
+# 课文难度评估（作业 2 第 4 个工具）
+python week09_工具调用/tool_agent.py 评估一下《愚公移山》适不适合 HSK4 的学生
 # 采集全部调用轨迹（原始输出存 evidence/，不改写模型回答）
 python week09_工具调用/run_traces.py --output week09_工具调用/evidence/trace_run_20261116.json
+# smolagents 最小示例（作业 4 加分项，需 pip install smolagents）
+python week09_工具调用/smolagents_demo.py --output week09_工具调用/evidence/smolagents_run_20261116.json
 ```
 
 ## 交付与证据
 
 | 文件 | 作用 |
 |---|---|
-| `tool_agent.py` | 手写最小工具调用循环：三个工具 + `parse_calls` 容错解析 + `run()` 循环 |
-| `run_traces.py` | 轨迹采集脚本：4 组真实调用（含 1 组口语式会诊素材），原始输出存 JSON |
+| `tool_agent.py` | 手写最小工具调用循环：四个工具 + `parse_calls` 容错解析 + `run()` 循环 |
+| `run_traces.py` | 轨迹采集脚本：用例登记表 + `--cases` 筛选 + `--repeat` 采失败样本，原始输出存 JSON |
 | `call_log.md` | **3 条调用轨迹记录**（四要素齐全）＋ 1 条会诊素材 ＋ 稳定性观察 ＋ 验收单逐项对照 |
-| `evidence/trace_run_20261116.json` | 原始模型输出、解析结果、工具返回、最终回答，未手工改写 |
+| `作业1_失败案例会诊.md` | 课后作业 1：口语式问句 6 连跑样本的会诊（答一半＋编造时间），三段原始数据＋约束改法与验证 |
+| `作业2_第4个工具_课文难度评估.md` | 课后作业 2：`text_difficulty` 输入输出说明＋两条真实轨迹＋回喂文案对照实验 |
+| `作业3_W10预习_三句辨析.md` | 课后作业 3：Function Calling / MCP / 普通 API 各一句话辨析＋希望 MCP 接上的 2 个外部工具 |
+| `作业4_smolagents加分项.md` | 课后作业 4（路径 A）：真实跑通 ToolCallingAgent＋5 行映射表（含源码位置）＋300 字反思＋出处与许可证 |
+| `smolagents_demo.py` | 作业 4 运行脚本：`@tool` 版 `hsk_level` + `ToolCallingAgent`，本机 Ollama 口径 |
+| `data/愚公移山.txt` | 作业 2 素材：课文原文（节选自《列子·汤问》，含白话与教学提示），来自课程代码包 |
+| `evidence/trace_run_20261116.json` | 当堂 4 条轨迹原始数据 |
+| `evidence/trace_homework_20261116.json` 等 | 课后作业原始运行数据（改前复读样本、失败样本、改后对照、smolagents 运行） |
 | `requirements.txt` | 本周依赖（openai、python-dotenv） |
 
 ## 已知问题
 
 - 本机未配置云端密钥，**云端 deepseek-chat 口径没有本机实测证据**；实测模型为 Ollama `qwen2.5:1.5b`，与讲义教师机 8B 规模相近（讲义五连跑全对，本机 1.5B 方差明显，见 `call_log.md` 第三节）。
-- 1.5B 模型收到「拒绝计算」后可能复读被拒调用，靠 `max_calls` 收口兜底；最终回答可能是未经组织的 JSON 原文（轨迹 3 实录）。
-- 口语式复合问句会答一半（轨迹 4 实录），与讲义第六节预测一致；问句措辞本身是约束手段。
+- 1.5B 模型对「拒绝/错误」信息的理解弱：收到「拒绝计算」「拒绝评估」后可能复读调用（由 `max_calls` 收口兜底）或把拒绝歪曲成结论（作业 2 轨迹 B 实录）；长工具返回下的复读问题已通过 `FEED_TEMPLATE` 对照实验修复（0/5 → 5/5）。
+- 口语式复合问句会答一半甚至编造时间（作业 1 的 6 连跑实录，4/6 未调 `get_time`）；问句措辞本身是约束手段，已写入使用约定。
+- `text_difficulty` 只统计生词表收录词汇、不做全文分词，口径已写进工具返回值。
 
 ## 与前后周的接线
 

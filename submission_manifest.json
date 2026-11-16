@@ -88,7 +88,19 @@
     "week09_工具调用/call_log.md",
     "week09_工具调用/README.md",
     "week09_工具调用/requirements.txt",
-    "week09_工具调用/evidence/trace_run_20261116.json"
+    "week09_工具调用/evidence/trace_run_20261116.json",
+    "week09_工具调用/data/愚公移山.txt",
+    "week09_工具调用/smolagents_demo.py",
+    "week09_工具调用/作业1_失败案例会诊.md",
+    "week09_工具调用/作业2_第4个工具_课文难度评估.md",
+    "week09_工具调用/作业3_W10预习_三句辨析.md",
+    "week09_工具调用/作业4_smolagents加分项.md",
+    "week09_工具调用/evidence/trace_homework_20261116.json",
+    "week09_工具调用/evidence/trace_homework_retry_20261116.json",
+    "week09_工具调用/evidence/trace_homework2_fixed_20261116.json",
+    "week09_工具调用/evidence/trace_homework2_variance_20261116.json",
+    "week09_工具调用/evidence/homework1_failures_20261116.json",
+    "week09_工具调用/evidence/smolagents_run_20261116.json"
   ],
   "identical_copies": [
     [

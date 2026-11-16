@@ -1,0 +1,122 @@
+{
+  "model": "qwen2.5:1.5b",
+  "base_url": "http://localhost:11434/v1",
+  "tools": [
+    "calc",
+    "get_time",
+    "hsk_level",
+    "text_difficulty"
+  ],
+  "cases": [
+    {
+      "label": "作业2-课文难度评估-目标4级",
+      "run": 1,
+      "question": "评估一下《愚公移山》这篇课文适不适合 HSK4 的学生，用 text_difficulty 工具查",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"text_difficulty\", \"args\": [\"愚公移山\", 4]}",
+          "parsed_calls": [
+            {
+              "tool": "text_difficulty",
+              "args": [
+                "愚公移山",
+                4
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "text_difficulty",
+          "args": [
+            "愚公移山",
+            4
+          ],
+          "result": "课文 1263 字，目标 HSK4。生词表词汇出现 11 个，其中不超过 4 级的 4 个，覆盖率 36.4%；超纲词 7 个：叩石垦壤(6级)、子子孙孙(5级)、寒暑易节(6级)、愚公(6级)、愚公移山(5级)、无穷无尽(5级)、智叟(6级)。（口径：仅统计生词表收录词汇，生词表外词汇未参与统计）"
+        },
+        {
+          "model_output": "{\"tool\": \"text_difficulty\", \"args\": [\"愚公移山\", 4]}",
+          "parsed_calls": [
+            {
+              "tool": "text_difficulty",
+              "args": [
+                "愚公移山",
+                4
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "text_difficulty",
+          "args": [
+            "愚公移山",
+            4
+          ],
+          "result": "课文 1263 字，目标 HSK4。生词表词汇出现 11 个，其中不超过 4 级的 4 个，覆盖率 36.4%；超纲词 7 个：叩石垦壤(6级)、子子孙孙(5级)、寒暑易节(6级)、愚公(6级)、愚公移山(5级)、无穷无尽(5级)、智叟(6级)。（口径：仅统计生词表收录词汇，生词表外词汇未参与统计）"
+        },
+        {
+          "model_output": "{\"tool\": \"text_difficulty\", \"args\": [\"愚公移山\", 4]}",
+          "parsed_calls": [],
+          "note": "max_calls 到顶强制收口"
+        }
+      ],
+      "answer": "{\"tool\": \"text_difficulty\", \"args\": [\"愚公移山\", 4]}"
+    },
+    {
+      "label": "作业2-课文难度评估-非法等级",
+      "run": 1,
+      "question": "用 text_difficulty 工具评估《愚公移山》适合 HSK 15 级的学生吗",
+      "model": "qwen2.5:1.5b",
+      "ok": true,
+      "steps": [
+        {
+          "model_output": "{\"tool\": \"text_difficulty\", \"args\": [\"愚公移山\", 15]}",
+          "parsed_calls": [
+            {
+              "tool": "text_difficulty",
+              "args": [
+                "愚公移山",
+                15
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "text_difficulty",
+          "args": [
+            "愚公移山",
+            15
+          ],
+          "result": "拒绝评估：目标等级超出 1-9，收到 15"
+        },
+        {
+          "model_output": "{\"tool\": \"text_difficulty\", \"args\": [\"愚公移山\", 9]}",
+          "parsed_calls": [
+            {
+              "tool": "text_difficulty",
+              "args": [
+                "愚公移山",
+                9
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "text_difficulty",
+          "args": [
+            "愚公移山",
+            9
+          ],
+          "result": "课文 1263 字，目标 HSK9。生词表词汇出现 11 个，其中不超过 9 级的 11 个，覆盖率 100.0%；无超纲词。（口径：仅统计生词表收录词汇，生词表外词汇未参与统计）"
+        },
+        {
+          "model_output": "{\"tool\": \"text_difficulty\", \"args\": [\"愚公移山\", 9]}",
+          "parsed_calls": [],
+          "note": "max_calls 到顶强制收口"
+        }
+      ],
+      "answer": "{\"tool\": \"text_difficulty\", \"args\": [\"愚公移山\", 9]}"
+    }
+  ]
+}
